@@ -3,6 +3,20 @@ on: push
 jobs:
   build-backend:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: quotes
+          POSTGRES_PASSWORD: quotes
+          POSTGRES_DB: quotes
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U quotes -d quotes"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Check out the code
         uses: actions/checkout@v4
