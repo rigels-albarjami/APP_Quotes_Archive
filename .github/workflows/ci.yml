@@ -2,7 +2,7 @@ name: CI
 on: push
 jobs:
   build-backend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     services:
       postgres:
         image: postgres:18
