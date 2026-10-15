@@ -41,7 +41,7 @@ jobs:
             -e DB_PASSWORD=quotes \
             -e DB_HOST=localhost \
             -e DB_PORT=5432 \
-            -e DB_NAME=wrong_db \
+            -e DB_NAME=quotes \
             "$IMAGE"
 
           for i in $(seq 1 30); do
