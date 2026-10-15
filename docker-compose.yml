@@ -1,5 +1,5 @@
 services:
-  frontend:                     # questo nome "frontend" diventa un indirizzo di rete per usare il fe all'interno del network privato di docker
+  frontend:                     
     image: nginx:alpine
     container_name: quotes_frontend
     restart: always

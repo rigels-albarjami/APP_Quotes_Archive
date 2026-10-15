@@ -1,7 +1,5 @@
 services:
-  frontend:                     # questo nome "frontend" diventa un indirizzo di rete per usare il fe all'interno del network privato di docker
-    image: nginx:alpine
-    container_name: quotes_frontend
+  frontend:                     
     restart: always
     ports:
       - '8080:80'
@@ -9,10 +7,10 @@ services:
       - ./frontend:/usr/share/nginx/html:ro
     depends_on:
       - backend
-  db:                    #questo nome "db" diventa un indirizzo di rete per usare il db, infatti il backend to raggiunge scrivendo DB_HOST:db
+  db:                    
     image: postgres:18
     container_name: quotes_db
-    restart: always    #se il container si ferma o crasha, Docker lo riavvia automaticamente
+    restart: always    
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -27,7 +25,7 @@ services:
       timeout: 5s
       retries: 5
 
-  backend:           # niente "build" qui: usiamo SOLO l'immagine gia' costruita e pushata dalla CI su Docker Hub
+  backend:           
     image: rig97/quotes-backend:${TAG}
     container_name: quotes_backend 
     restart: always
